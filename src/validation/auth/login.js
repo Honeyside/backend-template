@@ -7,6 +7,7 @@ const login = async (req, res, next) => {
   const { language } = req.query;
 
   const schema = Yup.object().shape({
+
     username: Yup
       .string(
         Utils.getTranslation({
@@ -18,6 +19,7 @@ const login = async (req, res, next) => {
           dictionary: Dictionary.Auth, code: 'username-required', language,
         })
       ),
+
     password: Yup
       .string(
         Utils.getTranslation({
@@ -29,6 +31,7 @@ const login = async (req, res, next) => {
           dictionary: Dictionary.Auth, code: 'password-required', language,
         })
       ),
+
   });
 
   try {

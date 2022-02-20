@@ -2,10 +2,9 @@ import Express from 'express';
 import jwt from 'jsonwebtoken';
 import argon2 from 'argon2';
 import config from '../../../config';
-import regexUsername from '../../utils/regexUsername';
+import Utils from '../../utils';
 import DAO from '../../dao';
 import Dictionary from '../../dictionary';
-import getTranslation from '../../utils/getTranslation';
 
 const router = Express.Router();
 const { secret } = config;
@@ -16,7 +15,7 @@ router.post('*', async (req, res) => {
   const { language } = req.query;
 
   const email = username.toLowerCase();
-  username = regexUsername(username);
+  username = Utils.regexUsername(username);
 
   let user;
 
@@ -24,7 +23,7 @@ router.post('*', async (req, res) => {
     user = await DAO.Users.findUserByUsername(username);
   } catch (e) {
     return res.status(500).json({
-      username: getTranslation({ dictionary: Dictionary.Auth, code: 'database-read-error', language })
+      username: Utils.getTranslation({ dictionary: Dictionary.Auth, code: 'database-read-error', language })
     });
   }
 
@@ -33,14 +32,14 @@ router.post('*', async (req, res) => {
       user = await DAO.Users.findUserByEmail(email);
     } catch (e) {
       return res.status(500).json({
-        username: getTranslation({ dictionary: Dictionary.Auth, code: 'database-read-error', language })
+        username: Utils.getTranslation({ dictionary: Dictionary.Auth, code: 'database-read-error', language })
       });
     }
   }
 
   if (!user) {
     return res.status(400).json({
-      username: getTranslation({ dictionary: Dictionary.Auth, code: 'user-not-found', language })
+      username: Utils.getTranslation({ dictionary: Dictionary.Auth, code: 'user-not-found', language })
     });
   }
 
@@ -61,7 +60,7 @@ router.post('*', async (req, res) => {
         async (err, token) => {
           if (err) {
             return res.status(500).json({
-              username: getTranslation({ dictionary: Dictionary.Auth, code: 'error-while-signing-token', language })
+              username: Utils.getTranslation({ dictionary: Dictionary.Auth, code: 'error-while-signing-token', language })
             });
           }
           user.lastLogin = Date.now();
@@ -71,7 +70,7 @@ router.post('*', async (req, res) => {
       );
     } else {
       res.status(400).json({
-        password: getTranslation({ dictionary: Dictionary.Auth, code: 'wrong-password', language }),
+        password: Utils.getTranslation({ dictionary: Dictionary.Auth, code: 'wrong-password', language }),
       });
     }
   });
