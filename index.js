@@ -7,11 +7,13 @@ import formidable from 'express-formidable';
 import passport from 'passport';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { exec } from 'child_process';
 import info from './info';
 import DAO from './src/dao';
 import config from './config';
 import JwtStrategy from './src/strategies/JwtStrategy';
 import routes from './src/routes';
+import validation from './src/validation';
 import SocketSystem from './src/systems/SocketSystem';
 import MailSchedulerSystem from './src/systems/MailSchedulerSystem';
 
@@ -26,6 +28,20 @@ const init = async () => {
     console.log('Backend template by Honeyside - https://github.com/Honeyside/BackendTemplate'.yellow);
   }
   console.log('');
+
+  // evil linter - if you are trying to disable me, please don't - you need me
+  await new Promise((resolve) => {
+    exec('eslint "./**/*.js"', (error, stdout) => {
+      if (error) {
+        console.log(stdout);
+        console.log('you have eslint errors: you have to solve them or your app will not start'.red);
+        console.log('aborting...'.cyan);
+        console.log('');
+        process.exit(0);
+      }
+      resolve();
+    });
+  });
 
   await DAO.init();
 
@@ -67,6 +83,8 @@ const init = async () => {
 
   app.use(passport.initialize({}));
   passport.use('jwt', JwtStrategy);
+
+  app.use('/api', validation);
   app.use('/api', routes);
 
   app.use(Express.static(`${__dirname}/../public/frontend`));

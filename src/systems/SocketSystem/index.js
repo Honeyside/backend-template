@@ -19,9 +19,11 @@ const init = async (server) => {
   io.use((socket, next) => {
     if (socket.handshake.query && socket.handshake.query.token) {
       jwt.verify(socket.handshake.query.token, secret, (err, decoded) => {
-        if (err) return next(new Error('Authentication error'));
+        if (err) {
+          return next(new Error('Authentication error'));
+        }
         socket.decoded = decoded;
-        next();
+        return next();
       });
     } else {
       next(new Error('Authentication error'));

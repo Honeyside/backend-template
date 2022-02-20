@@ -1,12 +1,5 @@
-const express = require('express');
-const router = express.Router();
+import Express from 'express';
 
-router.use('/create', require('./create'));
-router.use('/search', require('./search'));
-router.use('/edit', require('./edit'));
-router.use('/delete', require('./delete'));
-router.use('/delete-many', require('./delete-many'));
-router.use('/status', require('./status'));
-router.use('/last-online', require('./last-online'));
+const router = Express.Router();
 
-module.exports = router;
+export default router;

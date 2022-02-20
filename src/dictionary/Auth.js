@@ -1,4 +1,4 @@
-const dictionary = {
+const Auth = {
   'invalid-email': {
     en: 'Invalid email address',
     it: 'Indirizzo email non valido',
@@ -77,4 +77,4 @@ const dictionary = {
   }
 };
 
-export default dictionary;
+export default Auth;

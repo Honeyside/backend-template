@@ -1,7 +1,16 @@
-const express = require('express');
-const router = express.Router();
+import Express from 'express';
+
+const router = Express.Router();
 const passport = require('passport');
 
-router.use('/users', passport.authenticate('jwt', {session: false, failureRedirect: '/api/auth/unauthorized'}, null), require('./users'));
+router.use(
+  '/users',
+  passport.authenticate(
+    'jwt',
+    { session: false, failureRedirect: '/api/auth/unauthorized' },
+    null
+  ),
+  require('./users')
+);
 
-module.exports = router;
+export default router;

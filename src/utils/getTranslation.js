@@ -4,14 +4,18 @@ const getTranslation = ({ dictionary, language, code }) => {
   }
 
   if (!dictionary[code]) {
-    return '[dictionary error]';
+    return `[${code}]`;
   }
 
   if (dictionary[code][language]) {
     return dictionary[code][language];
   }
 
-  return dictionary[code].en;
+  if (dictionary[code].en) {
+    return dictionary[code].en;
+  }
+
+  return `[${code}]`;
 };
 
 export default getTranslation;

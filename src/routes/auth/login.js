@@ -2,10 +2,9 @@ import Express from 'express';
 import jwt from 'jsonwebtoken';
 import argon2 from 'argon2';
 import config from '../../../config';
-import isEmpty from '../../utils/isEmpty';
 import regexUsername from '../../utils/regexUsername';
 import DAO from '../../dao';
-import dictionary from '../../dictionaries/auth';
+import Dictionary from '../../dictionary';
 import getTranslation from '../../utils/getTranslation';
 
 const router = Express.Router();
@@ -16,22 +15,6 @@ router.post('*', async (req, res) => {
   const { password } = req.fields;
   const { language } = req.query;
 
-  if (isEmpty(username)) {
-    return res.status(400).json({
-      status: 'error',
-      message: 'username required',
-      username: getTranslation({ dictionary, code: 'username-required', language }),
-    });
-  }
-
-  if (isEmpty(password)) {
-    return res.status(400).json({
-      status: 'error',
-      message: 'password required',
-      username: getTranslation({ dictionary, code: 'password-required', language }),
-    });
-  }
-
   const email = username.toLowerCase();
   username = regexUsername(username);
 
@@ -40,19 +23,25 @@ router.post('*', async (req, res) => {
   try {
     user = await DAO.Users.findUserByUsername(username);
   } catch (e) {
-    return res.status(500).json({ status: 'error', message: 'database read error' });
+    return res.status(500).json({
+      username: getTranslation({ dictionary: Dictionary.Auth, code: 'database-read-error', language })
+    });
   }
 
   if (!user) {
     try {
       user = await DAO.Users.findUserByEmail(email);
     } catch (e) {
-      return res.status(500).json({ status: 'error', message: 'database read error' });
+      return res.status(500).json({
+        username: getTranslation({ dictionary: Dictionary.Auth, code: 'database-read-error', language })
+      });
     }
   }
 
   if (!user) {
-    return res.status(400).json({ status: 'error', message: 'user not found', username: getTranslation({ dictionary, code: 'user-not-found', language }) });
+    return res.status(400).json({
+      username: getTranslation({ dictionary: Dictionary.Auth, code: 'user-not-found', language })
+    });
   }
 
   return argon2.verify(user.password, password).then(async (valid) => {
@@ -71,7 +60,9 @@ router.post('*', async (req, res) => {
         { expiresIn: Number.MAX_SAFE_INTEGER },
         async (err, token) => {
           if (err) {
-            return res.status(500).json({ status: 'error', message: 'error signing token' });
+            return res.status(500).json({
+              username: getTranslation({ dictionary: Dictionary.Auth, code: 'error-while-signing-token', language })
+            });
           }
           user.lastLogin = Date.now();
           await user.save();
@@ -79,7 +70,9 @@ router.post('*', async (req, res) => {
         }
       );
     } else {
-      res.status(400).json({ status: 'error', message: 'wrong password', password: getTranslation({ dictionary, code: 'wrong-password', language }) });
+      res.status(400).json({
+        password: getTranslation({ dictionary: Dictionary.Auth, code: 'wrong-password', language }),
+      });
     }
   });
 });

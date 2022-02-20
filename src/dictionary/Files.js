@@ -1,4 +1,4 @@
-const dictionary = {
+const Files = {
   'invalid-email': {
     en: 'Invalid email address',
     it: 'Indirizzo email non valido',
@@ -35,6 +35,10 @@ const dictionary = {
     en: 'Password too short (at least 6 characters)',
     it: 'Password troppo corta (almeno 6 caratteri)',
   },
+  'wrong-password': {
+    en: 'Wrong password',
+    it: 'Password errata',
+  },
   'user-not-found': {
     en: 'User not found',
     it: 'Utente non trovato',
@@ -44,9 +48,33 @@ const dictionary = {
     it: 'Codice di verifica'
   },
   welcome: {
-    en: 'Welcome to Barba Studio. ',
-    it: 'Benvenuto in Barba Studio. '
+    en: 'Welcome!',
+    it: 'Benvenuto!',
   },
+  'code-required': {
+    en: 'Auth code required',
+    it: 'Devi digitare il codice di autorizzazione',
+  },
+  'code-not-found': {
+    en: 'Invalid auth code',
+    it: 'Codice di autorizzazione non valido',
+  },
+  'code-expired': {
+    en: 'Auth code expired, please request a new one',
+    it: 'Codice scaduto, richiedine uno nuovo',
+  },
+  'auth-code': {
+    en: 'Authentication Code',
+    it: 'Codice di Autorizzazione',
+  },
+  'password-changed': {
+    en: 'Password Changed',
+    it: 'Password Cambiata',
+  },
+  'the-associated-user-is-no-longer-valid': {
+    en: 'The associated user is no longer valid',
+    it: 'L\'utente associato non è più valido',
+  }
 };
 
-export default dictionary;
+export default Files;

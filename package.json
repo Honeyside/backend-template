@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node --experimental-specifier-resolution=node index",
     "dev": "nodemon --experimental-specifier-resolution=node index",
+    "lint": "eslint \"./**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
@@ -25,7 +26,6 @@
     "express": "^4.17.2",
     "express-formidable": "^1.2.0",
     "handlebars": "^4.7.7",
-    "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "mongoose": "^6.1.4",
@@ -41,7 +41,8 @@
     "tmp": "^0.2.1",
     "validator": "^13.7.0",
     "video-thumb": "^0.0.3",
-    "xss": "^1.0.10"
+    "xss": "^1.0.10",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "eslint": "^8.9.0",

@@ -13,11 +13,17 @@ Fork this repo and start working on your project!
 
 Remember to `cp .env.example .env` and set up your `.env` file before diving into code.
 
+Run `yarn dev` to start a nodemon development instance.
+Run `yarn start` to start a production environment.
+
+The *evil linter* is enabled by default. The app will not start unless you have **zero** eslint errors. You should really avoid disabling it: it's there for a reason, to provide maximum code quality.
+
 ## Project structure
 
 * Everything that relates to the database is inside the `src/dao` folder and *should not get out of that folder*. If you ever choose to change database, for example move from MongoDB to MySQL, you should only replace the contents of the `src/dao` folder.
-* Support for multi-language is in the `src/dictionaries` folder.
+* Support for multi-language is in the `src/dictionary` folder.
 * Routing is in the `src/routes` folder.
+* Yup validation for routing fields is in the `src/validation` folder.
 * Authentication strategies are in the `src/strategies` folder.
 * Plug-in systems such as the mail scheduler, the socket are in the `src/systems` folder.
 * HTMl templates (for example, mail templates) are in the `src/templates` folder.
