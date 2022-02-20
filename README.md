@@ -26,7 +26,7 @@ The *evil linter* is enabled by default. The app will not start unless you have 
 * Yup validation for routing fields is in the `src/validation` folder.
 * Authentication strategies are in the `src/strategies` folder.
 * Plug-in systems such as the mail scheduler, the socket are in the `src/systems` folder.
-* HTMl templates (for example, mail templates) are in the `src/templates` folder.
+* HTML templates (for example, mail templates) are in the `src/templates` folder.
 * Utils are functions that might be of help everywhere. You'll find them in the `src/utils` folder.
 
 ## Contributing
