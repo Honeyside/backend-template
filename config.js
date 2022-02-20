@@ -41,19 +41,19 @@ export default {
   thumbnail: [{
     key: 'little',
     size: 128,
-    type: 'crop', // Types are crop, width, height
+    type: 'crop', // types are crop, width, height
   }, {
     key: 'medium',
     size: 256,
-    type: 'crop', // Types are crop, width, height
+    type: 'crop', // types are crop, width, height
   }, {
     key: 'big',
     size: 512,
-    type: 'crop', // Types are crop, width, height
+    type: 'crop', // types are crop, width, height
   }, {
     key: 'width',
     size: 512,
-    type: 'width', // Types are crop, width, height
+    type: 'width', // types are crop, width, height
   }],
   mailerEnabled: process.env.MAILER_ENABLED === 'true',
   nodemailer: {
