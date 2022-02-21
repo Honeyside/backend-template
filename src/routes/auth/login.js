@@ -23,7 +23,7 @@ router.post('*', async (req, res) => {
     user = await DAO.Users.findUserByUsername(username);
   } catch (e) {
     return res.status(500).json({
-      username: Utils.getTranslation({ dictionary: Dictionary.Auth, code: 'database-read-error', language })
+      username: Utils.getTranslation({ dictionary: Dictionary.Auth, code: 'database-read-error', language }),
     });
   }
 
@@ -32,14 +32,14 @@ router.post('*', async (req, res) => {
       user = await DAO.Users.findUserByEmail(email);
     } catch (e) {
       return res.status(500).json({
-        username: Utils.getTranslation({ dictionary: Dictionary.Auth, code: 'database-read-error', language })
+        username: Utils.getTranslation({ dictionary: Dictionary.Auth, code: 'database-read-error', language }),
       });
     }
   }
 
   if (!user) {
     return res.status(400).json({
-      username: Utils.getTranslation({ dictionary: Dictionary.Auth, code: 'user-not-found', language })
+      username: Utils.getTranslation({ dictionary: Dictionary.Auth, code: 'user-not-found', language }),
     });
   }
 
@@ -60,13 +60,13 @@ router.post('*', async (req, res) => {
         async (err, token) => {
           if (err) {
             return res.status(500).json({
-              username: Utils.getTranslation({ dictionary: Dictionary.Auth, code: 'error-while-signing-token', language })
+              username: Utils.getTranslation({ dictionary: Dictionary.Auth, code: 'error-while-signing-token', language }),
             });
           }
           user.lastLogin = Date.now();
           await user.save();
           return res.status(200).json({ status: 'success', token });
-        }
+        },
       );
     } else {
       res.status(400).json({

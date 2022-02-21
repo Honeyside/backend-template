@@ -12,24 +12,24 @@ const login = async (req, res, next) => {
       .string(
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'password-required', language,
-        })
+        }),
       )
       .required(
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'username-required', language,
-        })
+        }),
       ),
 
     password: Yup
       .string(
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'password-required', language,
-        })
+        }),
       )
       .required(
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'password-required', language,
-        })
+        }),
       ),
 
   });

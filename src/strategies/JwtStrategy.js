@@ -10,7 +10,7 @@ const { secret } = config;
  */
 const JwtStrategy = new Strategy({
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: secret
+  secretOrKey: secret,
 }, (payload, done) => {
   DAO.Mongo.Models.User.findById(payload.id)
     .then((user) => {
@@ -21,7 +21,7 @@ const JwtStrategy = new Strategy({
           email: user.email,
           roles: user.roles,
           firstName: user.firstName,
-          lastName: user.lastName
+          lastName: user.lastName,
         });
       }
       return done(null, false);

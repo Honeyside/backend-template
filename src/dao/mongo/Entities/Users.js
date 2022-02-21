@@ -88,7 +88,7 @@ const findUsers = (query, sort, limit) => {
 };
 
 const Users = {
-  updateRootUser, findUserByUsername, insertUser, findUserById, findUsers, findUserByEmail
+  updateRootUser, findUserByUsername, insertUser, findUserById, findUsers, findUserByEmail,
 };
 
 export default Users;

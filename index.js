@@ -78,7 +78,7 @@ const init = async () => {
         }
       });
       next();
-    }
+    },
   );
 
   app.use(passport.initialize({}));

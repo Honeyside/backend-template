@@ -13,7 +13,7 @@ const init = async (server) => {
   io = new SocketIOServer(server, {
     cors: {
       origin: '*',
-    }
+    },
   });
 
   io.use((socket, next) => {
@@ -60,7 +60,7 @@ const init = async (server) => {
       const updateUser = await User.findById(user.id);
       updateUser.status = 'offline';
       updateUser.lastOnline = moment().toISOString();
-      updateUser.count--;
+      updateUser.count -= 1;
       await updateUser.save();
 
       io.emit('offline', { id: user.id });
@@ -69,7 +69,7 @@ const init = async (server) => {
     const updateUser = await User.findById(user.id);
     updateUser.status = 'online';
     updateUser.lastOnline = moment().toISOString();
-    updateUser.count++;
+    updateUser.count += 1;
     await updateUser.save();
 
     io.emit('online', { id: user.id });

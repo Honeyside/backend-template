@@ -8,9 +8,9 @@ router.use(
   passport.authenticate(
     'jwt',
     { session: false, failureRedirect: '/api/auth/unauthorized' },
-    null
+    null,
   ),
-  require('./users')
+  require('./users'),
 );
 
 export default router;

@@ -17,7 +17,7 @@ const Users = {
   },
   'last-name-required': {
     en: 'Last name is required',
-    it: 'Devi digitare il tuo cognome'
+    it: 'Devi digitare il tuo cognome',
   },
   'email-required': {
     en: 'Email is required',
@@ -41,7 +41,7 @@ const Users = {
   },
   'verification-code': {
     en: 'Verification code',
-    it: 'Codice di verifica'
+    it: 'Codice di verifica',
   },
 };
 

@@ -12,10 +12,8 @@
   },
   "rules": {
     "arrow-body-style": "off",
-    "comma-dangle": "off",
     "no-console": "off",
     "no-param-reassign": "off",
-    "no-plusplus": "off",
     "no-await-in-loop": "off",
     "no-restricted-syntax": [
       "error",

@@ -104,7 +104,7 @@ router.post('*', async (req, res) => {
       user.lastLogin = Date.now();
       await user.save();
       return res.status(200).json({ status: 'success', token, user });
-    }
+    },
   );
 });
 

@@ -14,71 +14,71 @@ const signUp = async (req, res, next) => {
       .string(
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'first-name-required', language,
-        })
+        }),
       )
       .required(
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'password-required', language,
-        })
+        }),
       ),
 
     lastName: Yup
       .string(
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'last-name-required', language,
-        })
+        }),
       )
       .required(
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'password-required', language,
-        })
+        }),
       ),
 
     email: Yup
       .string(
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'email-required', language,
-        })
+        }),
       )
       .required(
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'password-required', language,
-        })
+        }),
       )
       .email(
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'invalid-email', language,
-        })
+        }),
       ),
 
     username: Yup
       .string(
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'password-required', language,
-        })
+        }),
       )
       .required(
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'username-required', language,
-        })
+        }),
       ),
 
     password: Yup
       .string(
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'password-required', language,
-        })
+        }),
       )
       .required(
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'password-required', language,
-        })
+        }),
       )
       .min(
         6,
         Utils.getTranslation({
           dictionary: Dictionary.Auth, code: 'password-too-short', language,
-        })
+        }),
       ),
 
   });

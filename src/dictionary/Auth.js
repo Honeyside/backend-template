@@ -17,7 +17,7 @@ const Auth = {
   },
   'last-name-required': {
     en: 'Last name is required',
-    it: 'Devi digitare il tuo cognome'
+    it: 'Devi digitare il tuo cognome',
   },
   'email-required': {
     en: 'Email is required',
@@ -45,7 +45,7 @@ const Auth = {
   },
   'verification-code': {
     en: 'Verification code',
-    it: 'Codice di verifica'
+    it: 'Codice di verifica',
   },
   welcome: {
     en: 'Welcome!',
@@ -74,7 +74,7 @@ const Auth = {
   'the-associated-user-is-no-longer-valid': {
     en: 'The associated user is no longer valid',
     it: 'L\'utente associato non è più valido',
-  }
+  },
 };
 
 export default Auth;
