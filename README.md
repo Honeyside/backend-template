@@ -1,8 +1,5 @@
 # Backend Template - A DAO Node.js Express template
 
-[npm-image]: https://img.shields.io/npm/v/covetfs.svg
-[npm-url]: https://www.npmjs.com/package/covetfs
-
 This is a DAO (Document Access Object) Node.js Express template. The architecture supports both MongoDB and SQL databases, but it is configured with MongoDB by default.
 
 Support us on <a href="https://www.patreon.com/honeyside"><strong>Patreon</strong></a> to get priority updates on our development plan and <strong>voting power on new features</strong>.
